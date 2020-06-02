@@ -1,20 +1,11 @@
 
 import numpy as numpy
 
-import gym as openai_gym
-
 import math
-
-def random_index_argmax(list):
-    """ Argmax that chooses randomly among eligible maximum indices. """
-    # Numpy.amax(list) -> Returns the max number in the list
-    max_val = numpy.amax(list)
-    indices = numpy.nonzero(list == max_val)[0]
-    return numpy.random.choice(indices)
 
 class Agent():
 
-    def __init__(self, number_of_actions, number_of_states, learning_rate_alpha, discount_factor_gamma, epsilon_start, epsilon_end, epsilon_decrement):
+    def __init__(self, number_of_actions, number_of_states, learning_rate_alpha, discount_factor_gamma, epsilon_start, epsilon_end):
 
         self.number_of_actions = number_of_actions
 
@@ -27,8 +18,6 @@ class Agent():
         self.epsilon_start = epsilon_start
 
         self.epsilon_end = epsilon_end
-
-        self.epsilon_decrement = epsilon_decrement
 
         self.q_table = {}
 
@@ -62,7 +51,7 @@ class Agent():
             # .argmax() will always take the lowest value in a tie
             # (If action 0 and action 1 have the same value in the Q-Table, it will always return action 0).
             # We might want to improve upon this.
-            action = random_index_argmax(actions)
+            action = numpy.argmax(actions)
 
         return action
 
@@ -72,9 +61,7 @@ class Agent():
             # The numpy.random.random() is just a method to decrement self.epsilon_start
             self.epsilon_start = self.epsilon_start * numpy.log(2.718277777777)
 
-            #print(numpy.log(2.71822222222222))
-
-            #print("Epsilon is currently %.2f", self.epsilon_start)
+            #print(numpy.log(2.71827777777))
 
         else:
 
