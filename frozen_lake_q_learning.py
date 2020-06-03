@@ -16,10 +16,10 @@ if __name__ == "__main__":
     # Learning Rate: is > 10^(-6) and < 1.0
     # Typical Learning Rate is 0.001
 
-    new_agent = Agent(learning_rate_alpha=0.0001, number_of_actions=4, number_of_states=16,
+    new_agent = Agent(learning_rate_alpha=0.001, number_of_actions=4, number_of_states=16,
                       discount_factor_gamma=0.99, epsilon_start=1.0, epsilon_end=0.01)
 
-number_games = 50000
+number_games = 500000
 
 win_percentage = []
 
