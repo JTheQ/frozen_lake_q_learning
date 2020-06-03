@@ -72,7 +72,7 @@ class Agent():
 
         actions = numpy.array([self.q_table[(new_state, action)] for action in range(self.number_of_actions)])
 
-        optimal_action = random_index_argmax(actions)
+        optimal_action = numpy.argmax(actions)
 
         self.q_table[(old_state, action)] += self.learning_rate_alpha * (reward + self.discount_factor_gamma * self.q_table[(new_state, optimal_action)] - self.q_table[(old_state, action)])
 
