@@ -45,7 +45,7 @@ class Agent():
                 We have used a list comprehension to create a list of elements corresponding to the action values
                 for the given state by looking up the relevant quantities in Q-Table.
             '''
-            actions = numpy.array([(self.q_table[(current_state, action)] for action in range(self.number_of_actions))])
+            actions = numpy.array([self.q_table[(current_state, action)] for action in range(self.number_of_actions)])
             # Optimal Action
 
             # .argmax() will always take the lowest value in a tie
